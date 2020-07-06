@@ -11,4 +11,6 @@ public interface IOrderDao {
 
     //查询用户订单方法
     public List<Order> selectOrder(User user) throws Exception;
+    //添加订单的方法
+    public void add(Order order) ;
 }

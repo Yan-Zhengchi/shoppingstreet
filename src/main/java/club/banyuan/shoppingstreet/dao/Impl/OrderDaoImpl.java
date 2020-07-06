@@ -9,6 +9,7 @@ import club.banyuan.shoppingstreet.domain.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OrderDaoImpl extends BaseDaoImpl implements IOrderDao {
@@ -24,6 +25,19 @@ public class OrderDaoImpl extends BaseDaoImpl implements IOrderDao {
         ResultSet resultSet = executeQuery(sql, objects);
         List<Order> order = tableToClass(resultSet);
         return order;
+    }
+
+    @Override
+    public void add(Order order) {
+        Integer id=0;
+        String sql="insert into shoppingStreet.order(userId,loginName,userAddress,createTime,cost,serialNumber) values(?,?,?,?,?,?) ";
+        Object[] param=new Object[]{order.getUserId(),order.getLoginName(),order.getUserAddress(),new Date(),order.getCost(),order.getSerialNumber()};
+        try {
+            id=this.executeInsert(sql, param);
+            order.setId(new Integer(id).intValue());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

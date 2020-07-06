@@ -124,16 +124,17 @@
     <span class="fr">
       <span class="fl">
       <%
-      Object object = request.getAttribute("user");
+      Object object = request.getSession().getAttribute("user");
         if(object != null){
           User user = (User)object;
-          out.print("欢迎，" + user.getLoginName());
+          out.print("欢迎，" + "<a href = member.jsp?userId="+user.getId()+">"+user.getLoginName()+"</a>");
         }
         else{
           out.print("你好，请<a href='login.html'>登录</a>");
           out.print("&nbsp; <a href=\"register.html\" style=\"color:#ff4e00;\">免费注册</a>");
         }
     %>
+
         	&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
         	<span class="ss">
             	<div class="ss_list">

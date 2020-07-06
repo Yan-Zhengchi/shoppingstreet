@@ -60,6 +60,19 @@ public class OrderDetailDaoImpl extends BaseDaoImpl implements IOrderDetailDao {
     }
 
     @Override
+    public void add(OrderDetail detail) throws Exception {
+        Integer id=0;
+        String sql=" insert into order_detail(orderId,productId,quantity,cost) values(?,?,?,?) ";
+        try {
+            Object param[]=new Object[]{detail.getOrderId(),detail.getProductId(),detail.getQuantity(),detail.getCost()};
+            id=this.executeInsert(sql,param);
+            detail.setId(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public List<OrderDetail> tableToClass(ResultSet rs) throws Exception {
         ArrayList<OrderDetail> orderDetails = new ArrayList<>();
         while(rs.next()){

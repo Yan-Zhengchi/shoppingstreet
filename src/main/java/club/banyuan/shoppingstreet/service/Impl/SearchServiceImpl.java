@@ -11,6 +11,14 @@ import java.util.List;
 
 public class SearchServiceImpl implements ISearchService {
     @Override
+    public List<Product> selectProductById(Integer id) throws SQLException, ClassNotFoundException {
+
+        IProductDao productDao = new ProductDaoImpl(JDBCUtils.getConnection());
+        List<Product> products = productDao.selectProductById(id);
+        return products;
+    }
+
+    @Override
     public List<Product> selectProductByName(String proName) throws SQLException, ClassNotFoundException {
         //创建查询商品的dao，调用通过产品名查询的方法
         IProductDao productDao = new ProductDaoImpl(JDBCUtils.getConnection());

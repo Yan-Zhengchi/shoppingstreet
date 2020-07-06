@@ -14,4 +14,7 @@ public interface IProductDao {
 
     //通过商品名查询商品的方法
     public List<Product> selectProductByName(String name);
+
+    //通过id查询商品的方法
+    public List<Product> selectProductById(Integer id);
 }

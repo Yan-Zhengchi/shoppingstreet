@@ -43,6 +43,20 @@ public class ProductDaoImpl extends BaseDaoImpl implements IProductDao {
     }
 
     @Override
+    public List<Product> selectProductById(Integer id) {
+        String sql = "select * from product where id = ?";
+        Object[] objects = {id};
+        ResultSet resultSet = executeQuery(sql, objects);
+        try {
+            List<Product> productList = tableToClass(resultSet);
+            return productList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public List<Product> tableToClass(ResultSet rs) throws Exception {
         ArrayList<Product> list = new ArrayList<>();
         while(rs.next()){
@@ -61,4 +75,5 @@ public class ProductDaoImpl extends BaseDaoImpl implements IProductDao {
         }
         return list;
     }
+
 }

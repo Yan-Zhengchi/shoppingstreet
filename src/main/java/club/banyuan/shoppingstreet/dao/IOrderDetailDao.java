@@ -16,4 +16,6 @@ public interface IOrderDetailDao {
     public List<ShoppingCart> selectCostByPids(List<Integer> productIds) throws SQLException;
     //通过订单号查询订单详情的方法
     public List<OrderDetail> selectOrderDetail(Integer orderId) throws Exception;
+    //添加订单详情的方法
+    public void add(OrderDetail detail) throws Exception;
 }

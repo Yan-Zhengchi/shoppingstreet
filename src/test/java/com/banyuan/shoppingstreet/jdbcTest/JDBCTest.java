@@ -111,4 +111,13 @@ public class JDBCTest {
             System.out.println(product);
         }
     }
+
+    @Test
+    public void testSelectProductById(){
+        ProductDaoImpl productDao = new ProductDaoImpl(connection);
+        List<Product> products = productDao.selectProductById(744);
+        for (Product product : products) {
+            System.out.println(product);
+        }
+    }
 }
