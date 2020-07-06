@@ -26,7 +26,7 @@ public class ConfirmOrderServlet extends HttpServlet {
 		} else {
 
 			Map<Product, Integer> car = (Map<Product, Integer>) session.getAttribute("car");
-			request.getRequestDispatcher("BuyCar2.jsp").forward(request, response);
+			request.getRequestDispatcher("buyCart2.jsp").forward(request, response);
 		}
 	}
 
