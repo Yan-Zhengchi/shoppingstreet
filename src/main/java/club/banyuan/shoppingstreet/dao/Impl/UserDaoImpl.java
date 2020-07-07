@@ -33,6 +33,14 @@ public class UserDaoImpl extends BaseDaoImpl implements IUserDao {
         return user;
     }
 
+    @Override
+    public User selectByLoginName(String name) throws Exception {
+        String sql = "select * from user where loginName = ?";
+        Object[] objects = {name};
+        ResultSet resultSet = executeQuery(sql, objects);
+        User user = tableToClass(resultSet);
+        return user;
+    }
 
 
     @Override

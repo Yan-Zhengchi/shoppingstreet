@@ -10,5 +10,6 @@ public interface IUserService {
     //用户登录的方法
     public User login(String name ,String password);
 
-
+    //通过loginName查询用户
+    public User selectByLoginName(String name);
 }

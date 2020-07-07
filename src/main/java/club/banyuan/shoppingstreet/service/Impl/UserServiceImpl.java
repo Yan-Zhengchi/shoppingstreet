@@ -41,4 +41,22 @@ public class UserServiceImpl implements IUserService {
             return null;
         }
     }
+
+    @Override
+    public User selectByLoginName(String name) {
+        try {
+            UserDaoImpl userDao = new UserDaoImpl(JDBCUtils.getConnection());
+            User user = userDao.selectByLoginName(name);
+            return user;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
